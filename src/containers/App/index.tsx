@@ -1,5 +1,5 @@
 // Core
-import React, { FC, useEffect, useCallback } from 'react';
+import React, { FC, useCallback, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 // Containers
@@ -11,31 +11,31 @@ import { useLocalStorage } from '../../hooks';
 import { useTogglersRedux } from '../../bus/client';
 
 // Assets and Styles
-import { GlobalStyles, defaultTheme } from '../../assets';
+import { defaultTheme, GlobalStyles } from '../../assets';
 import { AppContainer } from './styles';
 
 export const App: FC = () => {
-    const { setTogglerAction } = useTogglersRedux();
-    const [ isDefaultTheme ] = useLocalStorage('isDefaultTheme', true);
+  const { setTogglerAction } = useTogglersRedux();
+  const [ isDefaultTheme ] = useLocalStorage('isDefaultTheme', true);
 
-    const setOnlineStatusHanlder = useCallback(() => void setTogglerAction({
-        type:  'isOnline',
-        value: navigator.onLine,
-    }), [ setTogglerAction ]);
+  const setOnlineStatusHanlder = useCallback(() => void setTogglerAction({
+    type:  'isOnline',
+    value: navigator.onLine,
+  }), [ setTogglerAction ]);
 
-    useEffect(() => {
-        setOnlineStatusHanlder();
-        window.addEventListener('online', setOnlineStatusHanlder);
-        window.addEventListener('offline', setOnlineStatusHanlder);
-    }, []);
+  useEffect(() => {
+    setOnlineStatusHanlder();
+    window.addEventListener('online', setOnlineStatusHanlder);
+    window.addEventListener('offline', setOnlineStatusHanlder);
+  }, []);
 
-    return (
-        <ThemeProvider theme = { isDefaultTheme ? defaultTheme : defaultTheme }>
-            <GlobalStyles />
-            <AppContainer>
-                <TopBar />
-                <Routes />
-            </AppContainer>
-        </ThemeProvider>
-    );
+  return (
+    <ThemeProvider theme={isDefaultTheme ? defaultTheme : defaultTheme}>
+      <GlobalStyles />
+      <AppContainer>
+        <TopBar />
+        <Routes />
+      </AppContainer>
+    </ThemeProvider>
+  );
 };

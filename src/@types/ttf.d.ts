@@ -1,11 +1,11 @@
 /* eslint-disable init-declarations */
 declare module '*.ttf' {
-    const File: any;
+  const File: any;
 
-    export = File
+  export = File
 }
 declare module '*.otf' {
-    const File: any;
+  const File: any;
 
-    export = File
+  export = File
 }

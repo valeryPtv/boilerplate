@@ -1,23 +1,23 @@
 // Core
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 
-type State =  {
-    error: Error | null;
+type State = {
+  error: Error | null;
 }
 
 export class ErrorBoundary extends Component<{}, State> {
-    static getDerivedStateFromError(error: Error) {
-        return { error };
-    }
+  static getDerivedStateFromError(error: Error) {
+    return { error };
+  }
 
-    state: State = {
-        error: null,
-    }
+  state: State = {
+    error: null,
+  }
 
-    render() {
-        const { error } = this.state;
-        const { children } = this.props;
+  render() {
+    const { error } = this.state;
+    const { children } = this.props;
 
-        return error ? (<div>Error component</div>) : children;
-    }
+    return error ? (<div>Error component</div>) : children;
+  }
 }

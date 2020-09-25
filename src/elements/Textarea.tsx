@@ -1,17 +1,16 @@
 // Core
-import React, { FC, DetailedHTMLProps, Ref } from 'react';
+import React, { DetailedHTMLProps, FC, Ref } from 'react';
 import styled from 'styled-components';
 
 // Types
 interface StyledTextareaProps {
-    error?: string;
+  error?: string;
 }
 
-export interface TextareaProps extends
-    StyledTextareaProps,
-    DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> {
-    ref?: Ref<HTMLTextAreaElement>;
-    withError?: boolean;
+export interface TextareaProps extends StyledTextareaProps,
+  DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> {
+  ref?: Ref<HTMLTextAreaElement>;
+  withError?: boolean;
 }
 
 // Styles
@@ -57,22 +56,22 @@ const ErrorMessage = styled.span`
 `;
 
 export const Textarea: FC<TextareaProps> = ({ withError, error, style, ...otherProps }) => {
-    if (withError) {
-        return (
-            <Container style = { style }>
-                <StyledTextarea
-                    error = { error }
-                    { ...otherProps }
-                />
-                <ErrorMessage>{error}</ErrorMessage>
-            </Container>
-        );
-    }
-
+  if (withError) {
     return (
+      <Container style={style}>
         <StyledTextarea
-            style = { style }
-            { ...otherProps }
+          error={error}
+          {...otherProps}
         />
+        <ErrorMessage>{error}</ErrorMessage>
+      </Container>
     );
+  }
+
+  return (
+    <StyledTextarea
+      style={style}
+      {...otherProps}
+    />
+  );
 };

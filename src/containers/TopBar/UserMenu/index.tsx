@@ -6,12 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container } from './styles';
 
 export const UserMenu: FC = () => {
-    return (
-        <Container isActive>
-            <FontAwesomeIcon
-                icon = 'check'
-                style = {{ width: 40, height: 40 }}
-            />
-        </Container>
-    );
+  return (
+    <Container isActive>
+      <FontAwesomeIcon
+        icon='check'
+        style={{ width: 40, height: 40 }}
+      />
+    </Container>
+  );
 };

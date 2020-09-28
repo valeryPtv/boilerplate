@@ -4,11 +4,11 @@ import React, { FC, useRef, useState } from 'react';
 // Components
 import { ErrorBoundary, Todo } from '../../components';
 
-// Api
-import { useCreateTodo, useDeleteTodo, useTodosQuery, useUpdateTodo } from '../../bus/todos';
-
 // Redux
 import { useTogglersRedux } from '../../bus/client/togglers';
+
+// Todos Hooks
+import { useFetchTodos, useTodosCrud } from '../../bus/todos';
 
 // Elements
 import { Button, Spinner } from '../../elements';
@@ -21,15 +21,10 @@ const Main: FC = () => {
   const headerRef = useRef<HTMLElement>(null);
   const { togglersRedux: { isOnline }} = useTogglersRedux();
 
-  const { data, isLoading: isTodosLoading } = useTodosQuery();
-  const [ createTodo, { isLoading: isCreateTodoLoading }] = useCreateTodo();
-  const [ updateTodo, { isLoading: isUpdateTodoLoading }] = useUpdateTodo();
-  const [ deleteTodo, { isLoading: isDeleteTodoLoading }] = useDeleteTodo();
+  const { todos: data, isLoading: isTodosLoading } = useFetchTodos();
+  const { createTodo, updateTodo, deleteTodo, isLoading: isTodosCrudLoading } = useTodosCrud();
 
-  const isLoading = isTodosLoading
-    || isCreateTodoLoading
-    || isUpdateTodoLoading
-    || isDeleteTodoLoading;
+  const isLoading = isTodosLoading || isTodosCrudLoading;
 
   if (!data || isLoading) {
     return <Spinner />;

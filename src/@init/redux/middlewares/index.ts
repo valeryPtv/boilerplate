@@ -1,10 +1,13 @@
 // Middlewares
 import { Middleware } from 'redux';
+import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
 const isDev = process.env.NODE_ENV === 'development';
 
 const middlewares: Middleware[] = [];
+
+middlewares.push(thunk);
 
 isDev && middlewares.push(
   createLogger({

@@ -1,11 +1,11 @@
 // Core
-import React, { FC, DetailedHTMLProps, Ref } from 'react';
+import React, { DetailedHTMLProps, FC, Ref } from 'react';
 import styled from 'styled-components';
 
 interface ButtonProps extends DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-    // use React.Ref instead of React.LegacyRef to prevent type incompatibility errors with styled-components types
-    ref?: Ref<HTMLButtonElement>;
-    active?: boolean;
+  // use React.Ref instead of React.LegacyRef to prevent type incompatibility errors with styled-components types
+  ref?: Ref<HTMLButtonElement>;
+  active?: boolean;
 }
 
 // Styles
@@ -30,13 +30,13 @@ const Styled = styled.button<ButtonProps>`
     }
 `;
 
-export const Button: FC<ButtonProps> = ({ children, ...otherProps  }) => {
-    return (
-        <Styled
-            { ...otherProps }>
-            {children}
-        </Styled>
-    );
+export const Button: FC<ButtonProps> = ({ children, ...otherProps }) => {
+  return (
+    <Styled
+      {...otherProps}>
+      {children}
+    </Styled>
+  );
 };
 
 

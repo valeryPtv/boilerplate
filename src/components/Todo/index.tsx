@@ -10,9 +10,9 @@ import { Container } from './styles';
 import * as Types from '../../bus/todos/types';
 
 type PropTypes = Types.Todo & {
-    isColor: boolean
-    updateHandler: Function
-    deleteHandler: Function
+  isColor: boolean
+  updateHandler: Function
+  deleteHandler: Function
 }
 
 // interface PropTypes extends Types.Todo {
@@ -22,17 +22,17 @@ type PropTypes = Types.Todo & {
 // }
 
 export const Todo: FC<PropTypes> = ({
-    isColor, text, isCompleted, updateHandler, deleteHandler,
-}) => {
-    return (
-        <Container isColor = { isColor }>
-            <p>{text}</p>
-            <Button onClick = { () => void updateHandler() }>
-                {isCompleted ? 'Done' : 'In progress'}
-            </Button>
-            <Button onClick = { () => void deleteHandler() }>
-                Delete
-            </Button>
-        </Container>
-    );
+                                      isColor, text, isCompleted, updateHandler, deleteHandler,
+                                    }) => {
+  return (
+    <Container isColor={isColor}>
+      <p>{text}</p>
+      <Button onClick={() => void updateHandler()}>
+        {isCompleted ? 'Done' : 'In progress'}
+      </Button>
+      <Button onClick={() => void deleteHandler()}>
+        Delete
+      </Button>
+    </Container>
+  );
 };

@@ -1,5 +1,5 @@
 // Core
-import React, { FC, DetailedHTMLProps, Ref } from 'react';
+import React, { DetailedHTMLProps, FC, Ref } from 'react';
 import styled from 'styled-components';
 
 // Styles
@@ -40,35 +40,33 @@ const ErrorMessage = styled.span`
 
 // Types
 interface StyledInputProps {
-    error?: string;
+  error?: string;
 }
 
-export interface InputProps extends
-    StyledInputProps,
-    DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
-{
-    // use React.Ref instead of React.LegacyRef to prevent type incompatibility errors with styled-components types
-    ref?: Ref<HTMLInputElement>;
-    withError?: boolean;
+export interface InputProps extends StyledInputProps,
+  DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+  // use React.Ref instead of React.LegacyRef to prevent type incompatibility errors with styled-components types
+  ref?: Ref<HTMLInputElement>;
+  withError?: boolean;
 }
 
 export const Input: FC<InputProps> = ({ withError, error, style, ...otherProps }) => {
-    if (withError) {
-        return (
-            <InputContainer style = { style }>
-                <StyledInput
-                    error = { error }
-                    { ...otherProps }
-                />
-                <ErrorMessage>{error}</ErrorMessage>
-            </InputContainer>
-        );
-    }
-
+  if (withError) {
     return (
+      <InputContainer style={style}>
         <StyledInput
-            style = { style }
-            { ...otherProps }
+          error={error}
+          {...otherProps}
         />
+        <ErrorMessage>{error}</ErrorMessage>
+      </InputContainer>
     );
+  }
+
+  return (
+    <StyledInput
+      style={style}
+      {...otherProps}
+    />
+  );
 };

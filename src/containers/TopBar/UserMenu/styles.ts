@@ -13,21 +13,21 @@ export const Container = styled.div<{ isActive: boolean }>`
     align-items: center;
 
     ${({ isActive, theme }) => isActive ? {
-        cursor:       'pointer',
-        'svg > path': {
-            fill:       theme.first.secondary,
-            transition: 'fill 0.5s',
-        },
-        '&:hover': {
-            'svg > path': {
-                fill: theme.first.hoverSecondary,
-            },
-        },
-    } : {
-        cursor:       'not-allowed',
-        'svg > path': {
-            fill: 'gray',
-        },
-    }}
+  cursor:       'pointer',
+  'svg > path': {
+    fill:       theme.first.secondary,
+    transition: 'fill 0.5s',
+  },
+  '&:hover': {
+    'svg > path': {
+      fill: theme.first.hoverSecondary,
+    },
+  },
+} : {
+  cursor:       'not-allowed',
+  'svg > path': {
+    fill: 'gray',
+  },
+}}
 
 `;

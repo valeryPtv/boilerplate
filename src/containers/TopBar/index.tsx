@@ -8,14 +8,14 @@ import { UserMenu } from './UserMenu';
 import logo from '../../assets/images/logo.png';
 
 // Styles
-import { TopbarContainer, Logo } from './styles';
+import { Logo, TopbarContainer } from './styles';
 
 export const TopBar: FC = () => {
-    return (
-        <TopbarContainer>
-            <Logo src = { logo } />
-            <h1>Boilerplate</h1>
-            <UserMenu />
-        </TopbarContainer>
-    );
+  return (
+    <TopbarContainer>
+      <Logo src={logo} />
+      <h1>Boilerplate</h1>
+      <UserMenu />
+    </TopbarContainer>
+  );
 };

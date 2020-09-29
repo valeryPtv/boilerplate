@@ -1,6 +1,6 @@
 /* eslint-disable init-declarations */
 declare module '*.wav' {
-    const File: string;
+  const File: string;
 
-    export = File
+  export = File
 }

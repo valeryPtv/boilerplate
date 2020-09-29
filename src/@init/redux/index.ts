@@ -1,5 +1,5 @@
 // Core
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
 // Reducers
@@ -10,8 +10,8 @@ import { todosReducer as todos } from '../../bus/todos/reducer';
 import { middlewares } from './middlewares';
 
 export const rootReducer = combineReducers({
-    togglers,
-    todos,
+  togglers,
+  todos,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

@@ -13,27 +13,27 @@ import { Todo } from '../types';
 import { API_URL } from '../../../@init/constants';
 
 export const updateTodo: UpdateTodo = async ({ todoId, body }) => {
-    store.dispatch(togglerCreatorAction({ type: 'isTodosFetching', value: true }));
-    try {
-        const response = await fetch(`${API_URL}/todos/${todoId}`, {
-            method:  'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials: 'include',
-            body:        JSON.stringify(body),
-        });
+  store.dispatch(togglerCreatorAction({ type: 'isTodosFetching', value: true }));
+  try {
+    const response = await fetch(`${API_URL}/todos/${todoId}`, {
+      method:  'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body:        JSON.stringify(body),
+    });
 
-        if (response.status !== 200) {
-            throw new Error('Todo update failed');
-        }
-
-        const data: Todo = await response.json();
-
-        store.dispatch(updateTodoAction(data));
-    } catch (error) {
-        console.log(error);
-    } finally {
-        store.dispatch(togglerCreatorAction({ type: 'isTodosFetching', value: false }));
+    if (response.status !== 200) {
+      throw new Error('Todo update failed');
     }
+
+    const data: Todo = await response.json();
+
+    store.dispatch(updateTodoAction(data));
+  } catch (error) {
+    console.log(error);
+  } finally {
+    store.dispatch(togglerCreatorAction({ type: 'isTodosFetching', value: false }));
+  }
 };

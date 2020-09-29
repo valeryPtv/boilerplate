@@ -36,6 +36,7 @@ plugins:
     - react-hooks
     - import
     - "@typescript-eslint"
+    - prettier
 
 settings:
     react:
@@ -106,21 +107,22 @@ rules:
                   - componentDiddCatch
 
         # React JSX
+    react/jsx-space-before-closing: 2
     react/jsx-boolean-value: 2
-    react/jsx-curly-spacing:
-        - 2
-        - always
-        - spacing:
-              objectLiterals: never
-    react/jsx-equals-spacing:
-        - 2
-        - always
-    react/jsx-indent:
-        - 2
-        - 4
-    react/jsx-indent-props:
-        - 2
-        - 4
+    #    react/jsx-curly-spacing:
+    #        - 2
+    #        - always
+    #        - spacing:
+    #              objectLiterals: never
+    #    react/jsx-equals-spacing:
+    #        - 2
+    #        - always
+    #    react/jsx-indent:
+    #        - 2
+    #        - 4
+    #    react/jsx-indent-props:
+    #        - 2
+    #        - 4
     react/jsx-no-comment-textnodes: 2
     react/jsx-no-duplicate-props: 2
     react/jsx-no-target-blank: 2
@@ -130,10 +132,10 @@ rules:
     react/jsx-uses-vars: 2
     react/jsx-max-props-per-line: 2
     react/jsx-first-prop-new-line: 2
-    react/jsx-closing-bracket-location:
-        - 2
-        - nonEmpty: after-props
-          selfClosing: tag-aligned
+    #    react/jsx-closing-bracket-location:
+    #        - 2
+    #        - nonEmpty: after-props
+    #          selfClosing: tag-aligned
     react/jsx-closing-tag-location: 2
     react/jsx-sort-props:
         - 2
@@ -204,7 +206,7 @@ rules:
     guard-for-in: 2
     no-alert: 2
     no-caller: 2
-    no-case-declarations: 2
+    no-case-declarations: 0
     no-div-regex: 2
     no-else-return: 2
     no-empty-function: 2
@@ -453,20 +455,20 @@ rules:
     arrow-body-style: 0
     arrow-parens: [2, 'always']
 
-        # Babel
+    # Babel
     babel/no-invalid-this: 0
     babel/quotes:
         - 2
         - single
     babel/new-cap: 0
 
-        # TypeScript
+    # TypeScript
     # "@typescript-eslint/no-unused-vars-experimental": 2
     "@typescript-eslint/no-unused-vars": 2
     "@typescript-eslint/no-use-before-define": 2
-    "@typescript-eslint/indent":
-        - 2
-        - 4
-        - SwitchCase: 1
-          MemberExpression: 1
-          ArrayExpression: 1
+#    "@typescript-eslint/indent":
+#        - 2
+#        - 4
+#        - SwitchCase: 1
+#          MemberExpression: 1
+#          ArrayExpression: 1

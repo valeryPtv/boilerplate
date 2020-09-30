@@ -6,8 +6,11 @@ import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { togglersReducer as togglers } from '../../bus/client';
 import { todosReducer as todos } from '../../bus/todos/reducer';
 
+// Saga
+import { rootSaga } from './rootSaga';
+
 // Middlewares
-import { middlewares } from './middlewares';
+import { middlewares, sagaMiddleware } from './middlewares';
 
 export const rootReducer = combineReducers({
   togglers,
@@ -17,3 +20,5 @@ export const rootReducer = combineReducers({
 export type AppState = ReturnType<typeof rootReducer>;
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middlewares)));
+
+sagaMiddleware.run(rootSaga);

@@ -3,9 +3,9 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { fetchTodos, createTodo, updateTodo, deleteTodo } from './api';
 import {
   SET_TODOS_ASYNC,
-  SetTodoActionType,
+  SetTodoAsyncActionType,
   SET_TODO_ASYNC,
-  UpdateTodoActionType,
+  UpdateTodoAsyncActionType,
   UPDATE_TODO_ASYNC,
   DELETE_TODO_ASYNC,
   DeleteTodoAsyncActionType,
@@ -35,11 +35,10 @@ export function* handleFetchTodos(): SagaIterator {
 }
 
 // Create
-export function* createTodoAsync(action: SetTodoActionType) {
+export function* createTodoAsync(action: SetTodoAsyncActionType) {
   try {
     yield put(togglerCreatorAction({ type: 'isTodosFetching', value: true }));
-    // TODO: remove any
-    const todo = yield call<any>(createTodo, action.payload);
+    const todo = yield call(createTodo, action.payload);
     yield put(setTodoAction(todo));
   } catch (error) {
     console.error(error);
@@ -53,11 +52,10 @@ export function* handleCreateTodo() {
 }
 
 // Update
-export function* updateTodoAsync(action: UpdateTodoActionType) {
+export function* updateTodoAsync(action: UpdateTodoAsyncActionType) {
   try {
     yield put(togglerCreatorAction({ type: 'isTodosFetching', value: true }));
-    // TODO: remove any
-    const todo = yield call<any>(updateTodo, action.payload);
+    const todo = yield call(updateTodo, action.payload);
     yield put(updateTodoAction(todo));
   } catch (error) {
     console.error(error);
@@ -74,9 +72,7 @@ export function* handleUpdateTodo() {
 export function* deleteTodoAsync(action: DeleteTodoAsyncActionType) {
   try {
     yield put(togglerCreatorAction({ type: 'isTodosFetching', value: true }));
-    // TODO: remove any
-    const wasDeleted = yield call<any>(deleteTodo, action.payload);
-    console.log('wasDeleted', wasDeleted, action);
+    const wasDeleted = yield call(deleteTodo, action.payload);
     if (wasDeleted) {
       yield put(deleteTodoAction(action.payload.todoId));
     }

@@ -1,18 +1,18 @@
 // Core
 import { all, call } from 'redux-saga/effects';
 import {
-  handleFetchTodos,
-  handleCreateTodo,
-  handleUpdateTodo,
-  handleDeleteTodo,
-} from '../../bus/todos/sagas';
+  watchFetchTodos,
+  watchTodoWorker,
+  watchUpdateTodo,
+  watchDeleteTodo,
+} from '../../bus/todos/saga';
 
 // watch sagas
 export function* rootSaga() {
   yield all([
-    call(handleFetchTodos),
-    call(handleCreateTodo),
-    call(handleUpdateTodo),
-    call(handleDeleteTodo),
+    call(watchFetchTodos),
+    call(watchTodoWorker),
+    call(watchUpdateTodo),
+    call(watchDeleteTodo),
   ]);
 }
